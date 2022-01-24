@@ -7,36 +7,38 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
         <script>
-	    var isFound = false;
-            AFRAME.registerComponent('markerhandler', {
+            AFRAME.registerComponent('markerhandler_A', {
                 init: function () {
                   this.el.sceneEl.addEventListener('markerFound', () => {
                     // log marker is found
-	            var id = this.el.id;
-                    if (isFound == false){
-			if (this.el.id == "markerA"){
-			    console.log('found marker A');
-		    	}if (this.el.id == "markerB"){
-			    console.log('found marker B');
-		    	}else{
-			    console.log('found other markers');
-		    	}
-		    }
-		    isFound = true;
+
+		    console.log('found marker A');
+
                   })
                   this.el.sceneEl.addEventListener('markerLost', () => {
                     // log marker is lost
-		    var id = this.el.id;
-                    if (isFound == true){
-			if (this.el.id == "markerA"){
-			    console.log('lost marker A');
-		    	}if (this.el.id == "markerB"){
-			    console.log('lost marker B');
-		    	}else{
-			    console.log('lost other markers');
-		    	}
-		    }
-		    isFound = false;
+
+		    console.log('lost marker A');
+
+
+                  })
+                }
+              });
+	
+	    AFRAME.registerComponent('markerhandler_B', {
+                init: function () {
+                  this.el.sceneEl.addEventListener('markerFound', () => {
+                    // log marker is found
+
+		    console.log('found marker B');
+
+                  })
+                  this.el.sceneEl.addEventListener('markerLost', () => {
+                    // log marker is lost
+
+		    console.log('lost marker B');
+
+
                   })
                 }
               });
@@ -64,7 +66,7 @@
             
 
             <a-marker 
-                markerhandler 
+                markerhandler_A
                 type="pattern"
                 preset="custom"
                 url="assets/pattern-Apple-logo-black-and-white.patt"
@@ -93,7 +95,7 @@
             </a-assets>
             
             <a-marker 
-                markerhandler 
+                markerhandler_B
                 type="pattern"
                 preset="custom"
                 url="assets/marker_AR.patt"
