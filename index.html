@@ -53,12 +53,7 @@
                 ></a-asset-item>
             </a-assets>
             
-            <a-assets>
-                <a-asset-item
-                    id="animated-asset-B"
-                    src="assets/asset_iPad.gltf"
-                ></a-asset-item>
-            </a-assets>
+            
 
             <a-marker 
                 markerhandler 
@@ -72,7 +67,7 @@
                 emitevents='true'
             >
                 <a-entity
-                    id="bowser-model-B"
+                    id="bowser-model-A"
                     scale="1 1 1" 
                     rotation="270 0 0"
                     animation-mixer="loop: repeat"
@@ -81,11 +76,18 @@
                     gesture-handler
                 ></a-entity>
             </a-marker>
+			
+			<a-assets>
+                <a-asset-item
+                    id="animated-asset-B"
+                    src="assets/asset_iPad.gltf"
+                ></a-asset-item>
+            </a-assets>
             
             <a-marker 
                 markerhandler 
                 type="pattern"
-                preset="hiro"
+                preset="custom"
                 url="assets/marker_AR.patt"
                 raycaster="objects: .clickable"
                 emitevents="true"
