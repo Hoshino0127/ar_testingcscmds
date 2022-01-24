@@ -59,14 +59,7 @@
                 id="markerA"
                 emitevents='true'
             >
-                <a-entity>
-                    <a-animation
-                        attribute="rotation"
-                        easing="linear"
-                        dur="60000"
-                        to="0 360 0"
-                        repeat="indefinite">
-                    </a-animation>  
+
                     <a-entity
                         id="bowser-model"
                         scale="1 1 1" 
@@ -75,8 +68,9 @@
                         gltf-model="#animated-asset"
                         class="clickable"
                         gesture-handler
+                        animation="property: rotation; from: 0 0 0 to: 0 360 0; loop: true; dur: 10000"
                     ></a-entity>
-                </a-entity>
+
                 
             </a-marker>
 
