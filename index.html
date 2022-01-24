@@ -7,38 +7,36 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
         <script>
-            AFRAME.registerComponent('markerhandler_A', {
+	    var isFound = false;
+            AFRAME.registerComponent('markerhandler', {
                 init: function () {
-                  this.el.sceneEl.addEventListener('markerFound', () => {
+                  this.el.sceneEl.addEventListener('markerFound', (evt) => {
                     // log marker is found
-
-		    console.log('found marker A');
-
+	            var id = evt.id;
+                    if (isFound == false){
+			if (this.el.id == "markerA"){
+			    console.log('found marker A');
+		    	}if (this.el.id == "markerB"){
+			    console.log('found marker B');
+		    	}else{
+			    console.log('found other markers');
+		    	}
+		    }
+		    isFound = true;
                   })
-                  this.el.sceneEl.addEventListener('markerLost', () => {
+                  this.el.sceneEl.addEventListener('markerLost', (evt) => {
                     // log marker is lost
-
-		    console.log('lost marker A');
-
-
-                  })
-                }
-              });
-	
-	    AFRAME.registerComponent('markerhandler_B', {
-                init: function () {
-                  this.el.sceneEl.addEventListener('markerFound', () => {
-                    // log marker is found
-
-		    console.log('found marker B');
-
-                  })
-                  this.el.sceneEl.addEventListener('markerLost', () => {
-                    // log marker is lost
-
-		    console.log('lost marker B');
-
-
+		    var id = evt.id;
+                    if (isFound == true){
+			if (this.el.id == "markerA"){
+			    console.log('lost marker A');
+		    	}if (this.el.id == "markerB"){
+			    console.log('lost marker B');
+		    	}else{
+			    console.log('lost other markers');
+		    	}
+		    }
+		    isFound = false;
                   })
                 }
               });
@@ -66,7 +64,7 @@
             
 
             <a-marker 
-                markerhandler_A
+                markerhandler 
                 type="pattern"
                 preset="custom"
                 url="assets/pattern-Apple-logo-black-and-white.patt"
@@ -95,7 +93,7 @@
             </a-assets>
             
             <a-marker 
-                markerhandler_B
+                markerhandler 
                 type="pattern"
                 preset="custom"
                 url="assets/marker_AR.patt"
