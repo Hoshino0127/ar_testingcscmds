@@ -55,7 +55,7 @@
             
             
 
-            <a-marker 
+            <a-marker-camera 
                 markerhandler 
                 type="pattern"
                 preset="custom"
@@ -75,16 +75,16 @@
                     class="clickable"
                     gesture-handler
                 ></a-entity>
-            </a-marker>
+            </a-marker-camera>
 			
-			<a-assets>
+	    <a-assets>
                 <a-asset-item
                     id="animated-asset-B"
                     src="assets/asset_iPad.gltf"
                 ></a-asset-item>
             </a-assets>
             
-            <a-marker 
+            <a-marker-camera 
                 markerhandler 
                 type="pattern"
                 preset="custom"
@@ -104,9 +104,8 @@
                     class="clickable"
                     gesture-handler
                 ></a-entity>
-            </a-marker>
+            </a-marker-camera>
 
-            <a-entity camera></a-entity>
         </a-scene>
     </body>
 </html>
