@@ -7,28 +7,34 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
         <script>
+	    var isFound = false;
             AFRAME.registerComponent('markerhandler', {
                 init: function () {
                   this.el.sceneEl.addEventListener('markerFound', () => {
                     // log marker is found
-                    if (this.el.id == "markerA"){
-                        console.log('found marker A');
-                    }else if (this.el.id == "markerB"){
-                        console.log('found marker B');
-                    }else{
-                        console.log('found other markers');
-                    }
-
+                    if (isFound == false){
+			if (this.el.id == "markerA"){
+			    console.log('found marker A');
+		    	}else if (this.el.id == "markerB"){
+			    console.log('found marker B');
+		    	}else{
+			    console.log('found other markers');
+		    	}
+		    }
+		    isFound = true;
                   })
                   this.el.sceneEl.addEventListener('markerLost', () => {
                     // log marker is lost
-                    if (this.el.id == "markerA"){
-                        console.log('lost marker A');
-                    }else if (this.el.id == "markerB"){
-                        console.log('lost marker B');
-                    }else{
-                        console.log('lost other markers');
-                    }
+                    if (isFound == true){
+			if (this.el.id == "markerA"){
+			    console.log('lost marker A');
+		    	}else if (this.el.id == "markerB"){
+			    console.log('lost marker B');
+		    	}else{
+			    console.log('lost other markers');
+		    	}
+		    }
+		    isFound = false;
                   })
                 }
               });
@@ -40,7 +46,7 @@
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
             renderer="logarithmicDepthBuffer: true;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; patternRatio: 0.75;"
+            arjs="sourceType: webcam;"
             
             id="scene"
             embedded
@@ -77,14 +83,14 @@
                 ></a-entity>
             </a-marker>
 			
-	    <a-assets>
+			<a-assets>
                 <a-asset-item
                     id="animated-asset-B"
                     src="assets/asset_iPad.gltf"
                 ></a-asset-item>
             </a-assets>
             
-            <a-marker
+            <a-marker 
                 markerhandler 
                 type="pattern"
                 preset="custom"
@@ -105,6 +111,7 @@
                     gesture-handler
                 ></a-entity>
             </a-marker>
+
             <a-entity camera></a-entity>
         </a-scene>
     </body>
