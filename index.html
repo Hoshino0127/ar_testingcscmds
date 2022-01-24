@@ -12,6 +12,7 @@
                 init: function () {
                   this.el.sceneEl.addEventListener('markerFound', () => {
                     // log marker is found
+	            var id = this.el.id;
                     if (isFound == false){
 			if (this.el.id == "markerA"){
 			    console.log('found marker A');
@@ -25,6 +26,7 @@
                   })
                   this.el.sceneEl.addEventListener('markerLost', () => {
                     // log marker is lost
+		    var id = this.el.id;
                     if (isFound == true){
 			if (this.el.id == "markerA"){
 			    console.log('lost marker A');
