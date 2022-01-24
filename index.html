@@ -6,28 +6,7 @@
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-        <script>
-            AFRAME.registerComponent('registerevents', {
-                init: function () {
-                    var marker = this.el;
-
-                    // Make the element emit events when found and when lost.
-                    marker.setAttribute('emitevents', 'true');
-
-                    marker.addEventListener('markerFound', function() {
-                        var markerId = marker.id;
-                        console.log('markerFound', markerId);
-                        // TODO: Add your own code here to react to the marker being found.
-                    });
-
-                    marker.addEventListener('markerLost', function() {
-                        var markerId = marker.id;
-                        console.log('markerLost', markerId);
-                        // TODO: Add your own code here to react to the marker being lost.
-                    });
-                }
-            });
-        </script>
+        
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -73,4 +52,26 @@
             <a-entity camera></a-entity>
         </a-scene>
     </body>
+    <script>
+        AFRAME.registerComponent('registerevents', {
+            init: function () {
+                var marker = this.el;
+
+                // Make the element emit events when found and when lost.
+                marker.setAttribute('emitevents', 'true');
+
+                marker.addEventListener('markerFound', function() {
+                    var markerId = marker.id;
+                    console.log('markerFound', markerId);
+                    // TODO: Add your own code here to react to the marker being found.
+                });
+
+                marker.addEventListener('markerLost', function() {
+                    var markerId = marker.id;
+                    console.log('markerLost', markerId);
+                    // TODO: Add your own code here to react to the marker being lost.
+                });
+            }
+        });
+    </script>
 </html>
